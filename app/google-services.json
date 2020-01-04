@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "609186825681",
+    "firebase_url": "https://repertorioapp-5fae6.firebaseio.com",
+    "project_id": "repertorioapp-5fae6",
+    "storage_bucket": "repertorioapp-5fae6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609186825681:android:ad18ae4f0063e306210cf0",
+        "android_client_info": {
+          "package_name": "com.efrata.repertorio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609186825681-ueh8lsd8s7ncse3h6uao7shne5atrkhe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.efrata.repertorio",
+            "certificate_hash": "5436db3d5c8f57387eb0adf1f402da1d093a6bcf"
+          }
+        },
+        {
+          "client_id": "609186825681-jji4evd6tg4daji30m2u5p4bc1rm3tu4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAijzRkS0uTeSiG707Mlwgai7vzYv18320"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609186825681-jji4evd6tg4daji30m2u5p4bc1rm3tu4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
