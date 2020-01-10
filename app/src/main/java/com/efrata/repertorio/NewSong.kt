@@ -21,8 +21,6 @@ class NewSong : AppCompatActivity() {
     private lateinit var addButton: ImageButton
     private lateinit var saveButton: Button
 
-//    private val singerList: ArrayList<TextInputEditText> = ArrayList()
-//    private val noteList: ArrayList<TextInputEditText> = ArrayList()
     private lateinit var recyclerView: RecyclerView
     private lateinit var customAdapter: SingerNoteAdapter
     private val singerNoteList: ArrayList<SingerNoteModel> = arrayListOf()
@@ -52,15 +50,14 @@ class NewSong : AppCompatActivity() {
         })
 
         addButton.setOnClickListener {
-            val addModel = SingerNoteModel("", "")
-            singerNoteList.add(addModel)
+            singerNoteList.add(SingerNoteModel("", ""))
             customAdapter.notifyItemInserted(singerNoteList.size.minus(1))
         }
 
         saveButton.setOnClickListener {
             val titleStr = title.text.toString().trim()
             val artistStr = artist.text.toString()
-//            val keyNoteStr = keyNote.text.toString()
+            customAdapter.setClearFocus(true)
 
             var saveDB =  when {
                 titleStr.isEmpty() -> {
@@ -88,8 +85,23 @@ class NewSong : AppCompatActivity() {
                 val songID = ref.push().key
 
                 val newSong = Song(songID!!, titleStr, artistStr, singerNoteList)
+                saveButton.isEnabled = false
                 ref.child(songID).setValue(newSong).addOnCompleteListener {
+                    title.clearFocus()
+                    artist.clearFocus()
+
+                    title.text?.clear()
+                    artist.text?.clear()
+                    singerNoteList.clear()
+                    singerNoteList.add(SingerNoteModel("", ""))
+                    customAdapter.notifyDataSetChanged()
+
+                    saveButton.isEnabled = true
                     Toast.makeText(this, "Canción guardada exitosamente", Toast.LENGTH_SHORT).show()
+                    customAdapter.setClearFocus(false)
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Ocurrió algún error, verifique su conexión", Toast.LENGTH_SHORT).show()
+                    customAdapter.setClearFocus(false)
                 }
             }
         }

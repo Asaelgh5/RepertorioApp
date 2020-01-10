@@ -20,5 +20,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, NewSong::class.java)
             startActivity(intent)
         }
+
+        showButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, SongListScreen::class.java)
+            startActivity(intent)
+        }
     }
 }

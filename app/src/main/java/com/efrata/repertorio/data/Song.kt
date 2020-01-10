@@ -7,4 +7,6 @@ class Song(
     val title: String,
     val artist: String,
     val singerNoteList: ArrayList<SingerNoteModel>
-)
+) {
+    constructor() : this("", "", "", arrayListOf())
+}

@@ -13,6 +13,7 @@ import com.google.android.material.textfield.TextInputEditText
 class SingerNoteAdapter(private val mSingerNoteList: ArrayList<SingerNoteModel>): RecyclerView.Adapter<SingerNoteAdapter.TextViewHolder>() {
 
     private var mListener: OnItemClickListener? = null
+    private var clearFocus: Boolean = false
 
     interface OnItemClickListener {
         fun onRemoveItem(position: Int)
@@ -20,6 +21,10 @@ class SingerNoteAdapter(private val mSingerNoteList: ArrayList<SingerNoteModel>)
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
         mListener = listener
+    }
+
+    fun setClearFocus(state: Boolean) {
+        clearFocus = state
     }
 
     class TextViewHolder(itemView: View, listener: OnItemClickListener, singerNoteList: ArrayList<SingerNoteModel>): RecyclerView.ViewHolder(itemView) {
@@ -61,6 +66,11 @@ class SingerNoteAdapter(private val mSingerNoteList: ArrayList<SingerNoteModel>)
     override fun onBindViewHolder(holder: TextViewHolder, position: Int) {
         holder.singerEditText.setText(mSingerNoteList[position].singerValue)
         holder.noteEditText.setText(mSingerNoteList[position].noteValue)
+
+        if (clearFocus) {
+            holder.singerEditText.clearFocus()
+            holder.noteEditText.clearFocus()
+        }
     }
 
     override fun getItemCount(): Int {
